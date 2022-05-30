@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="_20104681JoshMkhariProg6221POE.MVVM.View.MonthlyExpenseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_20104681JoshMkhariProg6221POE.MVVM.View" xmlns:viewmodel="clr-namespace:_20104681JoshMkhariProg6221POE.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MonthlyExpenseViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background='White'>
+    <StackPanel>
+
+        <Grid>
+            <!--Stack panel to host top coloumn-->
+            <Border Width="800"
+                    Height="13"
+                    Background="#ffea00"
+                    VerticalAlignment="Top" Margin="-13,167,13,0"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#ffea00"
+                    HorizontalAlignment="Left"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#ffea00"
+                    HorizontalAlignment="Right"
+                    />
+            <Image 
+                                    Source="/Images/MonthlyExpenseseImages.png"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Margin="0,0,0,373" Width="800" Height="174" Stretch="Fill"/>
+
+            <!--Stack panel to Welcome Speech buble Image-->
+            <TextBlock Text="Enter Gross Monthly Income"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,-150,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,-90,400,0">
+                <TextBox x:Name="TGrossMonthlyIncome" Text="{Binding ElementName=GrossMonthlyIncome, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TGrossMonthlyIncome_TextChanged" KeyDown="TGrossMonthlyIncome_KeyDown"/>
+                <Slider Minimum="0"  Maximum="10000000" TickPlacement="BottomRight" TickFrequency="1000" IsSnapToTickEnabled="True" x:Name="GrossMonthlyIncome" Cursor="Hand" ValueChanged="GrossMonthlyIncome_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Estimated Tax"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,-20,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,40,400,0">
+                <TextBox x:Name="TTax" Text="{Binding ElementName=Tax, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TTax_TextChanged" KeyDown="TGrossMonthlyIncome_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="Tax" Cursor="Hand" ValueChanged="Tax_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Groceries"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,100,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,160,400,0">
+                <TextBox x:Name="TGroceries" Text="{Binding ElementName=Groceries, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TGroceries_TextChanged" KeyDown="TGroceries_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="Groceries" Cursor="Hand" ValueChanged="Groceries_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Water and Lights"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,220,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,280,400,0">
+                <TextBox x:Name="TWaterL" Text="{Binding ElementName=WaterL, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TWaterL_TextChanged" KeyDown="TWaterL_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="WaterL" Cursor="Hand" ValueChanged="WaterL_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Travel Costs"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="400,-155,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,-95,100,0">
+                <TextBox x:Name="TTravel" Text="{Binding ElementName=Travel, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TTravel_TextChanged" KeyDown="TTravel_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="Travel" Cursor="Hand" ValueChanged="Travel_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Cell phone and telephone"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="400,-35,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,25,100,0">
+                <TextBox x:Name="TCell" Text="{Binding ElementName=Cell, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TCell_TextChanged" KeyDown="TCell_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="Cell" Cursor="Hand" ValueChanged="Cell_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Other Expenses"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="400,85,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="0,145,100,0">
+                <TextBox x:Name="TOther" Text="{Binding ElementName=Other, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TOther_TextChanged" KeyDown="TOther_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=GrossMonthlyIncome, Path=Value}" Minimum="0" TickPlacement="BottomRight" TickFrequency="100" IsSnapToTickEnabled="True" x:Name="Other" Cursor="Hand" ValueChanged="Other_ValueChanged"/>
+            </DockPanel>
+
+            <Image 
+                           Source="/Images/MonthlyExpensesMenu.png"
+                           HorizontalAlignment="right"
+                           VerticalAlignment="Center" Margin="0,420,0,67"
+                           RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.6,1.235" Stretch="Fill" Width="338" Height="40"/>
+
+
+
+        </Grid>
+        <Button x:Name="NextButton"
+                Command="{Binding UpdateViewCommand}" CommandParameter="{Binding ElementName=updater, Path=Value}"
+                Content="Next"
+                Foreground="White"
+                FontSize="14"
+                FontWeight="Medium"
+                Width="50"
+                Height="20"
+                HorizontalAlignment="Right"
+                Margin="0,-180,50,0" Click="NextButton_Click">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                    <Setter Property="Background" Value="#fa9109"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Border
+                    Height="12"
+                    Background="#ffea00"
+                    Margin="0,-160,335,0"
+                    />
+        <Slider Minimum="0" Maximum="1000000" TickPlacement="BottomRight" Visibility="Hidden" TickFrequency="1" IsSnapToTickEnabled="True" x:Name="updater" Cursor="Hand"/>
+    </StackPanel>
+</UserControl>

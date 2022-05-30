@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="_20104681JoshMkhariProg6221POE.MVVM.View.EnterSavingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_20104681JoshMkhariProg6221POE.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background='White'>
+    <StackPanel>
+
+        <Grid>
+            <!--Stack panel to host top coloumn-->
+            <Border Width="800"
+                    Height="13"
+                    Background="#fb846c"
+                    VerticalAlignment="Top"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#fb846c"
+                    HorizontalAlignment="Left"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#fb846c"
+                    HorizontalAlignment="Right"
+                    />
+            <StackPanel Orientation="Vertical"
+                        Grid.ColumnSpan="3"/>
+
+            <!--Stack panel to Welcome Speech buble Image-->
+            <StackPanel Orientation="Horizontal"
+                    Margin="0,-170,0,10">
+                <Image Width="500"
+                    Height="200"
+                    Source="/Images/speechBubbleBeforeVehicles.png"
+                       Margin="100,30,0,0"
+                    RenderOptions.BitmapScalingMode="Fant"
+                        Grid.Column="0"/>
+            </StackPanel>
+
+            <!--Stack panel to host buttons-->
+            <StackPanel Margin="0,250,0,0">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="Margin" Value="15,0,0,0"/>
+
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal"
+                            >
+                    <Border Width="150"
+                        Height="150"
+                        Background="LimeGreen"
+                        CornerRadius="10"
+                        Margin="200,0,0,0">
+                        <Button Height="150" Width="150"
+                            Command="{Binding UpdateViewCommand}" CommandParameter="Savings">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Width="116"
+                                    Height="135"
+                                    Source="/Images/savingsIcon.png"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Margin="0,0,0,10"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                    <Setter Property="Background" Value="#6ac28a"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                    <Border Width="150"
+                        Height="150"
+                        Background="#844eff"
+                        CornerRadius="10"
+                        Margin="40,0,0,0">
+                        <Button Height="150" Width="150"
+                            Command="{Binding UpdateViewCommand}" CommandParameter="FinalExpenses">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image Width="116"
+                                    Height="135"
+                                    Source="/Images/DisplayExpensesIcon.png"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Margin="0,0,0,10"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                    <Setter Property="Background" Value="#6ac28a"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                    </Border>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+
+        <Border Width="800"
+                    Height="13"
+                    Background="#fb846c"
+                Margin="0,-35,0,0"
+                    />
+    </StackPanel>
+</UserControl>

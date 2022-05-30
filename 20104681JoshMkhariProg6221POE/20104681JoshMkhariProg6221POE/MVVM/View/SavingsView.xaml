@@ -1,0 +1,226 @@
+﻿<UserControl x:Class="_20104681JoshMkhariProg6221POE.MVVM.View.SavingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:_20104681JoshMkhariProg6221POE.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background='White'>
+    <StackPanel>
+
+        <Grid>
+            <!--Stack panel to host top coloumn-->
+            <Border Width="800"
+                    Height="13"
+                    Background="#14748a"
+                    VerticalAlignment="Top" Margin="-13,167,13,0"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#14748a"
+                    HorizontalAlignment="Left"
+                    />
+            <Border Width="13"
+                    Height="480"
+                    Background="#14748a"
+                    HorizontalAlignment="Right"
+                    />
+            <Image 
+                                    Source="/Images/savingsBanner.jpg"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" 
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Margin="0,0,0,373" Width="800" Height="174" Stretch="Fill"/>
+
+            <!--Stack panel to Welcome Speech buble Image-->
+            <TextBlock Text="Enter the name of what you are saving for"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,-150,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,-110,400,0">
+                <TextBox x:Name="TSavingName" DockPanel.Dock="Top" TextAlignment="Left" Width="200" Text="Savings Name" TextChanged="TSavingName_TextChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Savings Goal (how much you want to save up to)"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,-70,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,-10,400,0">
+                <TextBox x:Name="TGoal" Text="{Binding ElementName=Goal, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TGoal_TextChanged" KeyDown="TGoal_KeyDown"/>
+                <Slider Maximum="10000000" TickPlacement="BottomRight" TickFrequency="100000" IsSnapToTickEnabled="True" x:Name="Goal" Cursor="Hand" ValueChanged="Goal_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Starting Balance"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,50,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,105,400,0">
+                <TextBox x:Name="TBalance" Text="{Binding ElementName=Balance, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TBalance_TextChanged" KeyDown="TBalance_KeyDown"/>
+                <Slider Maximum="{Binding ElementName=Goal, Path=Value}"  Minimum="0" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" x:Name="Balance" Cursor="Hand" ValueChanged="Balance_ValueChanged"/>
+            </DockPanel>
+
+            <TextBlock Text="Enter Annual Interest Rate"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,160,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,220,400,0">
+                <TextBox x:Name="TInterest" Text="{Binding ElementName=InterestRate, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TInterest_TextChanged" KeyDown="TInterest_KeyDown"/>
+                <Slider Maximum="100"  Minimum="1" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" x:Name="InterestRate" Cursor="Hand" ValueChanged="InterestRate_ValueChanged"/>
+            </DockPanel>
+            <TextBlock Text="Enter years to save"
+                                   Foreground="black"
+                                   FontSize="10"
+                                   Margin="100,270,10,0"
+                                   VerticalAlignment="Center" 
+                                   FontFamily="Fonts/#Dosis"/>
+            <DockPanel VerticalAlignment="Center" Margin="100,330,400,0">
+                <TextBox x:Name="TYears" Text="{Binding ElementName=Years, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" TextAlignment="Left" Width="200" TextChanged="TYears_TextChanged" KeyDown="TYears_KeyDown" />
+                <Slider Maximum="130"  Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" x:Name="Years" Cursor="Hand" ValueChanged="Years_ValueChanged"/>
+            </DockPanel>
+
+            <Border Width="300"
+                    Height="200"
+                    Margin="350,80,0,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
+                        <GradientStop Color="#3aa0ff" Offset="1"/>
+
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,400,200"/>
+                </Border.Clip>
+
+                <Grid>
+                    <StackPanel>
+
+                        <TextBlock Text="Monthly repayment will be"
+                                   Foreground="White"
+                                   FontSize="12"
+                                   Margin="-20,10,0,0"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Fonts/#Dosis">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock x:Name="displaySavingsAmount"
+                                   
+                                   Foreground="white"
+                                   Background="Transparent"
+                                   FontSize="20"
+                                   Margin="0,10,0,0"
+                                   HorizontalAlignment="Center"
+                                   FontFamily="Fonts/#Dosis">
+                            <Run Text = "R "/>
+                            <Run Text="{Binding ElementName=SavingsAmount, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+                        </TextBlock>
+                        <Slider Minimum="0" Maximum="10000000" TickPlacement="BottomRight" Visibility="Hidden" TickFrequency="1" IsSnapToTickEnabled="True" x:Name="SavingsAmount" Cursor="Hand"/>
+                        <TextBlock Text=""
+                                   Foreground="White"
+                                   FontSize="12"
+                                   Margin="20,20,160,0"
+                                   FontFamily="Fonts/#Dosis">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <TextBlock Text=""
+                                   Foreground="White"
+                                   FontSize="12"
+                                   Margin="200,-15,50,0"
+                                   FontFamily="Fonts/#Dosis" Height="16">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="Current monthly expenses total:"
+                                   Foreground="White"
+                                   FontSize="12"
+                                   Margin="20,30,110,0"
+                                   FontFamily="Fonts/#Dosis">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock   x:Name="TCurrentTotal"
+                                   
+                                   Foreground="White"
+                                   Background="Transparent"
+                                   FontSize="12"
+                                   Margin="200,-14,0,0"
+                                   FontFamily="Fonts/#Dosis" Height="16">
+                        <Run Text="R"/>
+                        <Run Text= "{Binding ElementName=currentTotal, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+                        </TextBlock>
+                        <Slider Minimum="0" Maximum="10000000000000" TickPlacement="BottomRight" Visibility="Hidden" TickFrequency="1" IsSnapToTickEnabled="True" x:Name="currentTotal" Cursor="Hand"/>
+                        <Slider Minimum="0" Maximum="1000000" TickPlacement="BottomRight" Visibility="Hidden" TickFrequency="1" IsSnapToTickEnabled="True" x:Name="updater" Cursor="Hand"/>
+                    </StackPanel>
+
+                    <Image Width="70"
+                           Height="70"
+                           Source="/Images/236831.png"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="top" Margin="220,10,10,0"
+                           RenderOptions.BitmapScalingMode="Fant"/>
+                </Grid>
+
+            </Border>
+
+            <Image 
+                           Source="/Images/SavingsMenu.png"
+                           HorizontalAlignment="right"
+                           VerticalAlignment="Center" Margin="0,420,0,67"
+                           RenderOptions.BitmapScalingMode="Fant" RenderTransformOrigin="0.6,1.235" Stretch="Fill" Width="338" Height="40"/>
+
+
+
+        </Grid>
+        <Button x:Name="NextButton"
+                Content="Next"
+                 Command="{Binding UpdateViewCommand}" CommandParameter="{Binding ElementName=updater, Path=Value}"
+                Foreground="White"
+                FontSize="14"
+                FontWeight="Medium"
+                Width="50"
+                Height="20"
+                HorizontalAlignment="Right"
+                Margin="0,-180,50,0" Click="NextButton_Click">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                    <Setter Property="Background" Value="#fa9109"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Border
+                    Height="12"
+                    Background="#14748a"
+                    Margin="0,-160,335,0"
+                    />
+    </StackPanel>
+</UserControl>
